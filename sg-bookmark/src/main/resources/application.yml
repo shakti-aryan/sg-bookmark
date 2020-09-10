@@ -1,0 +1,22 @@
+security:
+  oauth2:
+    client:
+      client-id: 674112817322-s9f05tvje2mur92fe8jvjjv722s5oh3c.apps.googleusercontent.com
+      client-secret: yvKyx61TlrdPW5ij9JrjedlA
+      access-token-uri: https://www.googleapis.com/oauth2/v4/token
+      user-authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+      token-name: oauth_token
+      authentication-scheme: query
+      client-authentication-scheme: form
+      scope:
+      - profile
+      - email
+    resource:
+      user-info-uri: https://www.googleapis.com/userinfo/v2/me
+      prefer-token-info: false
+      
+spring:
+  cloud:
+    gcp:
+      project-id: sg-bookmark
+      
