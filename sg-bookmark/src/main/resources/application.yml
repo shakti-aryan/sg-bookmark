@@ -13,7 +13,7 @@ security:
       - email
     resource:
       user-info-uri: https://www.googleapis.com/userinfo/v2/me
-      prefer-token-info: false
+      prefer-token-info: true
       
 spring:
   cloud:

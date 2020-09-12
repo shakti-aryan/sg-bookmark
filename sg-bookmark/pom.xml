@@ -25,7 +25,18 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+		      <exclusion>
+		        <groupId>org.springframework.boot</groupId>
+		        <artifactId>spring-boot-starter-tomcat</artifactId>
+		      </exclusion>
+		    </exclusions>
 		</dependency>
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <scope>provided</scope>
+		  </dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-gcp-starter</artifactId>
@@ -45,12 +56,12 @@
 		    <artifactId>spring-security-oauth2-autoconfigure</artifactId>
 		    <version>2.3.3.RELEASE</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 		    <groupId>org.slf4j</groupId>
 		    <artifactId>slf4j-log4j12</artifactId>
 		    <version>2.0.0-alpha0</version>
 		    <scope>test</scope>
-		</dependency>
+		</dependency> -->
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
@@ -99,7 +110,7 @@
 		        <artifactId>appengine-maven-plugin</artifactId>
 		        <version>2.2.0</version>
 		        <configuration>
-		          <version>3</version>
+		          <version>1</version>
 		          <projectId>sg-bookmark</projectId>
 		        </configuration>
 		     </plugin>
