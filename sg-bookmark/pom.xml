@@ -110,7 +110,7 @@
 		        <artifactId>appengine-maven-plugin</artifactId>
 		        <version>2.2.0</version>
 		        <configuration>
-		          <version>1</version>
+		          <version>2</version>
 		          <projectId>sg-bookmark</projectId>
 		        </configuration>
 		     </plugin>
