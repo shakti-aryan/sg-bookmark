@@ -23,14 +23,14 @@ public class Authentication {
 	@Autowired
 	private AuthService authService;
 
-	@PostMapping(value="/auth")
-	@ResponseBody
-	public ApiResponse processUserLogin() {
-		
-		ApiResponse response = new ApiResponse();
-		response.setOk(true);
-		return response;
-	}
+	/*
+	 * @PostMapping(value="/auth")
+	 * 
+	 * @ResponseBody public ApiResponse processUserLogin() {
+	 * 
+	 * ApiResponse response = new ApiResponse(); response.setOk(true); return
+	 * response; }
+	 */
 	
 	@RequestMapping(value = "/user")
 	public Principal user(Principal principal) {
