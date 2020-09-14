@@ -14,9 +14,4 @@ security:
     resource:
       user-info-uri: https://www.googleapis.com/userinfo/v2/me
       prefer-token-info: true
-      
-spring:
-  cloud:
-    gcp:
-      project-id: sg-bookmark
-      
+
