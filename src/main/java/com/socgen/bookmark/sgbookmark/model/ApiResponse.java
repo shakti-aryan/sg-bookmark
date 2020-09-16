@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data
+@NoArgsConstructor
 public class ApiResponse implements Serializable {
 
 	private static final long serialVersionUID = 21379823811199L;
@@ -14,6 +14,10 @@ public class ApiResponse implements Serializable {
 	private boolean ok;
 	private Map<String,Object> data;
 	
+	public Map<String, Object> getData() {
+		return data;
+	}
+
 	@SuppressWarnings("unchecked")
 	public <T> T get(String key) {
 		if(this.data == null)

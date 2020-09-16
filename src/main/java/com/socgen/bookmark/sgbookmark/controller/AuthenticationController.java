@@ -26,6 +26,7 @@ public class AuthenticationController {
 	public String userInfo() {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println(auth.getDetails());
 		return auth.getName();
 	}
 	
