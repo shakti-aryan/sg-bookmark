@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.socgen.bookmark.sgbookmark.entity.Card;
 import com.socgen.bookmark.sgbookmark.model.CardDetail;
+import com.socgen.bookmark.sgbookmark.model.CardReq;
 import com.socgen.bookmark.sgbookmark.repository.CardRepository;
 import com.socgen.bookmark.sgbookmark.service.CardService;
 import com.socgen.bookmark.sgbookmark.service.UrlService;
@@ -23,7 +24,7 @@ public class CardServiceImpl implements CardService {
 	@Autowired UrlService urlService;
 	
 	@Override
-	public CardDetail createCard(CardDetail cardDetails) {
+	public CardDetail createCard(CardReq cardDetails) {
 		
 		String shortenUrl = urlService.convertToShortUrl(cardDetails.getOriginalUrl());
 		Date expiryDate = cardDetails.getExpiresAt() == null ? DateUtil.addDays(new Date(), 2) : cardDetails.getExpiresAt();

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.socgen.bookmark.sgbookmark.model.ApiResponse;
-import com.socgen.bookmark.sgbookmark.model.CardDetail;
+import com.socgen.bookmark.sgbookmark.model.CardReq;
 import com.socgen.bookmark.sgbookmark.service.CardService;
 
 @RestController
@@ -25,7 +25,7 @@ public class CardController {
 
 	@PostMapping("/create")
 	@ResponseBody
-	public ApiResponse createCard(@RequestBody CardDetail cardDetail) {
+	public ApiResponse createCard(@RequestBody CardReq cardDetail) {
 		
 		ApiResponse response = new ApiResponse();
 		response.add("card", cardService.createCard(cardDetail));

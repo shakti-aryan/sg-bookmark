@@ -25,12 +25,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<!-- <exclusions>
+			<exclusions>
 		      <exclusion>
 		        <groupId>org.springframework.boot</groupId>
 		        <artifactId>spring-boot-starter-tomcat</artifactId>
 		      </exclusion>
-		    </exclusions> -->
+		    </exclusions>
 		</dependency>
 		<dependency>
 		    <groupId>javax.servlet</groupId>
@@ -163,7 +163,7 @@
 		        <artifactId>appengine-maven-plugin</artifactId>
 		        <version>2.2.0</version>
 		        <configuration>
-		          <version>2</version>
+		          <version>3</version>
 		          <projectId>sg-bookmark</projectId>
 		        </configuration>
 		     </plugin>

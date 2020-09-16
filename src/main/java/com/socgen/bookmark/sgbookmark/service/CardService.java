@@ -1,10 +1,11 @@
 package com.socgen.bookmark.sgbookmark.service;
 
 import com.socgen.bookmark.sgbookmark.model.CardDetail;
+import com.socgen.bookmark.sgbookmark.model.CardReq;
 
 public interface CardService {
 
-	CardDetail createCard(CardDetail cardDetails);
+	CardDetail createCard(CardReq cardDetails);
 	
 	CardDetail fetchCardById(Integer id);
 	
