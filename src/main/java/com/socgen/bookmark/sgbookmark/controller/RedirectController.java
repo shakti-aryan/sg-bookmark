@@ -27,7 +27,6 @@ public class RedirectController {
     @Cacheable(value = "urls", key = "#shortUrl", sync = true)
     public ResponseEntity<Void> getAndRedirect(@PathVariable String shortUrl) {
         String url = cardService.fetchOrignialUrl(shortUrl);
-        System.out.println("original url is "+url);
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(url))
                 .build();
     }

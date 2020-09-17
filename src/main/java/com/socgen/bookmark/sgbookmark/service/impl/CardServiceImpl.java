@@ -7,6 +7,7 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.socgen.bookmark.sgbookmark.constant.AppConstant;
 import com.socgen.bookmark.sgbookmark.entity.Card;
 import com.socgen.bookmark.sgbookmark.model.CardDetail;
 import com.socgen.bookmark.sgbookmark.model.CardReq;
@@ -72,10 +73,13 @@ public class CardServiceImpl implements CardService {
 		
 		tinyUrl = UrlServiceImpl.sanitizeURL(tinyUrl);
 		
+		if(!tinyUrl.contains(AppConstant.domain))
+			tinyUrl = new StringBuilder(AppConstant.redirectDomain).append(tinyUrl).toString();
+		
 		String originalUrl = cardRepo.getOriginalUrlByTinyUrl(tinyUrl);
 		
 		if(ObjUtil.isBlank(originalUrl))
-			throw new EntityNotFoundException();
+			throw new EntityNotFoundException("There is no entity with " + tinyUrl);
 		
 		return originalUrl;
 	}
