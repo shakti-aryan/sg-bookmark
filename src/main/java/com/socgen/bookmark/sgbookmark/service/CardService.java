@@ -10,4 +10,6 @@ public interface CardService {
 	CardDetail fetchCardById(Integer id);
 	
 	CardDetail fetchCardByTinyUrl(String tinyUrl);
+	
+	String fetchOrignialUrl(String tinyUrl);
 }

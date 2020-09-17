@@ -14,6 +14,7 @@ import com.socgen.bookmark.sgbookmark.repository.CardRepository;
 import com.socgen.bookmark.sgbookmark.service.CardService;
 import com.socgen.bookmark.sgbookmark.service.UrlService;
 import com.socgen.bookmark.sgbookmark.util.DateUtil;
+import com.socgen.bookmark.sgbookmark.util.ObjUtil;
 
 @Service
 public class CardServiceImpl implements CardService {
@@ -64,6 +65,19 @@ public class CardServiceImpl implements CardService {
 		}
 		
 		return convertCardEntityToPojo(card);
+	}
+	
+	@Override
+	public String fetchOrignialUrl(String tinyUrl) {
+		
+		tinyUrl = UrlServiceImpl.sanitizeURL(tinyUrl);
+		
+		String originalUrl = cardRepo.getOriginalUrlByTinyUrl(tinyUrl);
+		
+		if(ObjUtil.isBlank(originalUrl))
+			throw new EntityNotFoundException();
+		
+		return originalUrl;
 	}
 	
 	private CardDetail convertCardEntityToPojo(Card card) {

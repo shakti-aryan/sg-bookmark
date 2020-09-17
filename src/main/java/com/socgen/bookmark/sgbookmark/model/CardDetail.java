@@ -4,8 +4,10 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.socgen.bookmark.sgbookmark.entity.User;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CardDetail {
 
 	private Integer id;

@@ -14,6 +14,7 @@ public class SgBookmarkApplication extends SpringBootServletInitializer{
 	}
 	
 	public static void main(String[] args) {
+		
 		SpringApplication.run(SgBookmarkApplication.class, args);
 	}
 

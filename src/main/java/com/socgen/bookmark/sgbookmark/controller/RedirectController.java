@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.socgen.bookmark.sgbookmark.service.CardService;
 import com.socgen.bookmark.sgbookmark.service.UrlService;
 
 @RestController
@@ -20,12 +21,12 @@ import com.socgen.bookmark.sgbookmark.service.UrlService;
 public class RedirectController {
 	
 	@Autowired
-	private UrlService urlService;
+	private CardService cardService;
 	
 	@GetMapping(value = "/{shortUrl}")
     @Cacheable(value = "urls", key = "#shortUrl", sync = true)
     public ResponseEntity<Void> getAndRedirect(@PathVariable String shortUrl) {
-        String url = urlService.getOriginalUrl(shortUrl);
+        String url = cardService.fetchOrignialUrl(shortUrl);
         System.out.println("original url is "+url);
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(url))
                 .build();

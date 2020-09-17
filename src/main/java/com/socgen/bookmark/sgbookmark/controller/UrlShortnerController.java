@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.socgen.bookmark.sgbookmark.model.ApiResponse;
 import com.socgen.bookmark.sgbookmark.service.UrlService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1")
@@ -20,21 +22,12 @@ public class UrlShortnerController {
 	@Autowired
 	private UrlService urlService;
 	
-	
+	@ApiOperation(value = "generate shorten url", notes = "This srevice is to test shorten url service, redirection to actual url will not work for the urls generated using this controller")
 	@PostMapping("/shorten-url")
 	public ApiResponse shortenUrl(@RequestBody String longUrl) {
 		
 		ApiResponse response = new ApiResponse();
 		response.add("url", urlService.convertToShortUrl(longUrl));
-		response.setOk(true);
-		return response;
-	}
-	
-	@GetMapping("/url/original")
-	public ApiResponse getOriginalUrl(@RequestParam(required=true, value="shortUrl") String shortUrl) {
-		
-		ApiResponse response = new ApiResponse();
-		response.add("originalUrl", urlService.getOriginalUrl(shortUrl));
 		response.setOk(true);
 		return response;
 	}

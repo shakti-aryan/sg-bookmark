@@ -2,7 +2,7 @@ security:
   oauth2:
     client:
       client-id: 674112817322-s9f05tvje2mur92fe8jvjjv722s5oh3c.apps.googleusercontent.com
-      client-secret: yvKyx61TlrdPW5ij9JrjedlA
+      client-secret: ENC(UT/VbcA5ODgdnlftzziUkIhFYXUa4PW4BU7PbG8hD6HINQlaCiLjqA==)     # yvKyx61TlrdPW5ij9JrjedlA
       access-token-uri: https://www.googleapis.com/oauth2/v4/token
       user-authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
       token-name: oauth_token
@@ -19,6 +19,12 @@ spring:
   datasource:
     url: jdbc:postgresql://34.77.12.32:5432/postgres
     username: postgres
-    password: root
+    password: ENC(dl/vP+ct5Ld1u/pLT9WdEw==)
     driver-class-name: org.postgresql.Driver
+    
+jasypt:
+  encryptor:
+    password: password
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
     

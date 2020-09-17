@@ -1,5 +1,7 @@
 package com.socgen.bookmark.sgbookmark.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.socgen.bookmark.sgbookmark.exception.ExceptionMapper;
 import com.socgen.bookmark.sgbookmark.model.ApiResponse;
 import com.socgen.bookmark.sgbookmark.model.CardReq;
 import com.socgen.bookmark.sgbookmark.service.CardService;
@@ -18,14 +21,14 @@ import com.socgen.bookmark.sgbookmark.service.CardService;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1/card")
-public class CardController {
+public class CardController extends ExceptionMapper {
 	
 	@Autowired
 	private CardService cardService;
 
 	@PostMapping("/create")
 	@ResponseBody
-	public ApiResponse createCard(@RequestBody CardReq cardDetail) {
+	public ApiResponse createCard(@Valid @RequestBody CardReq cardDetail) {
 		
 		ApiResponse response = new ApiResponse();
 		response.add("card", cardService.createCard(cardDetail));

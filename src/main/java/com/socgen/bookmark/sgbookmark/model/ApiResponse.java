@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse implements Serializable {
 
 	private static final long serialVersionUID = 21379823811199L;
@@ -14,17 +16,29 @@ public class ApiResponse implements Serializable {
 	private boolean ok;
 	private Map<String,Object> data;
 	
+	private ApiErrorModel error;
+	
 	public Map<String, Object> getData() {
 		return data;
 	}
-
-	@SuppressWarnings("unchecked")
-	public <T> T get(String key) {
-		if(this.data == null)
-			return null;
-		return (T) data.get(key);
+	
+	public ApiResponse() {
+		
 	}
 	
+	public ApiResponse(boolean ok, ErrorCode code, String message) {
+		
+		this.ok = ok;
+		this.addError(new ApiErrorModel(code, message));
+	}
+	public void addError(String code, String message) {
+		this.addError(new ApiErrorModel(code, message));
+	}
+	
+	public void addError(ApiErrorModel errorModel) {
+		this.error = errorModel;
+	}
+
 	public void add(String key,Object obj) {
 		if(data == null) {
 			data = new HashMap<>();
@@ -38,4 +52,13 @@ public class ApiResponse implements Serializable {
 	public void setOk(boolean ok) {
 		this.ok = ok;
 	}
+
+	public ApiErrorModel getError() {
+		return error;
+	}
+
+	public void setError(ApiErrorModel error) {
+		this.error = error;
+	}
+	
 }
