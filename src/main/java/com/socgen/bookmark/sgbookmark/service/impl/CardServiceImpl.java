@@ -79,7 +79,7 @@ public class CardServiceImpl implements CardService {
 		String originalUrl = cardRepo.getOriginalUrlByTinyUrl(tinyUrl);
 		
 		if(ObjUtil.isBlank(originalUrl))
-			throw new EntityNotFoundException("There is no entity with " + tinyUrl);
+			throw new EntityNotFoundException("Requested Entity is Expired Or Never Existed");
 		
 		return originalUrl;
 	}
@@ -100,7 +100,7 @@ public class CardServiceImpl implements CardService {
 		
 		if (expiryDate != null && expiryDate.before(new Date())){
             cardRepo.delete(card);;
-            throw new EntityNotFoundException("Link expired!");
+            throw new EntityNotFoundException("Requested Entity is Expired Or Never Existed");
         }
 		
 		return details;

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.socgen.bookmark.sgbookmark.exception.ExceptionMapper;
 import com.socgen.bookmark.sgbookmark.service.CardService;
-import com.socgen.bookmark.sgbookmark.service.UrlService;
 
 @RestController
 @CrossOrigin

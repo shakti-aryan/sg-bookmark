@@ -47,6 +47,9 @@ public class Card implements Serializable {
 	@Column(name="created_date")
 	private Timestamp createdDate;
 	
+	@Column(name = "associated_group")
+	private Integer groupId;
+	
 	@ManyToOne
 	@JoinColumn(name="created_by")
 	private User createdBy;
@@ -114,6 +117,14 @@ public class Card implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(Integer groupId) {
+		this.groupId = groupId;
 	}
 	
 }

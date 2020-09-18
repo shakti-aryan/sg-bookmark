@@ -1,22 +1,17 @@
 package com.socgen.bookmark.sgbookmark.service.impl;
 
-import org.jboss.logging.Logger;
 import org.springframework.stereotype.Service;
 
 import com.socgen.bookmark.sgbookmark.constant.AppConstant;
 import com.socgen.bookmark.sgbookmark.service.UrlService;
 import com.socgen.bookmark.sgbookmark.util.ObjUtil;
 
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Random;
 
 @Service
-@Slf4j
 public class UrlServiceImpl implements UrlService {
 	
-	private static final Logger log = Logger.getLogger(UrlServiceImpl.class);
-
 	private char myChars[];
 
 	private Random myRand; // Random object used to generate random integers
@@ -42,7 +37,13 @@ public class UrlServiceImpl implements UrlService {
 		
 		if(ObjUtil.isBlank(longURL))
 			throw new IllegalArgumentException();
-		return AppConstant.redirectDomain + getKey(longURL);
+		return AppConstant.redirectDomain + getKey();
+	}
+	
+	@Override
+	public String getGroupShortenUrl() {
+		
+		return AppConstant.groupDomain + getKey();
 	}
 
 	public static String sanitizeURL(String url) {
@@ -52,8 +53,7 @@ public class UrlServiceImpl implements UrlService {
 		return url;
 	}
 
-	private String getKey(String longURL) {
-		log.info("shortning url ==> " + longURL);
+	private String getKey() {
 		return generateRandomKey();
 	}
 
