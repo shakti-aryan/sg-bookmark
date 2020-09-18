@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -30,23 +29,19 @@ public class Card implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CARD_DETAILS_ID_GENERATOR")
 	private Integer id;
 	
-	@NotNull
-	@Column(name="title")
+	@Column(name="title", nullable = false)
 	private String title;
 	
-	@NotNull
-	@Column(name="description")
+	@Column(name="description", nullable = false)
 	private String description;
 	
-	@NotNull
-	@Column(name="long_url")
+	@Column(name="long_url", nullable = false)
 	private String longUrl;
 	
-	@NotNull
-	@Column(name="tiny_url")
+	@Column(name="tiny_url", nullable = false)
 	private String tinyUrl;
 	
-	@Column(name="expiry_date")
+	@Column(name="expiry_date", nullable = false)
 	private Timestamp expiryDate;
 	
 	@Column(name="created_date")

@@ -2,25 +2,17 @@ package com.socgen.bookmark.sgbookmark.model;
 
 import java.util.Date;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 
-import org.springframework.validation.annotation.Validated;
-
-@Validated
 public class CardReq {
 
-	@Valid
-	@NotNull
+	@NonNull
 	private String originalUrl;
 	
-	@NotEmpty
-	@Valid
+	@NonNull
 	private String title;
 	
-	@Valid
-	@NotNull
+	@NonNull
 	private String description;
 	
 	private Date expiresAt;

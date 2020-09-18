@@ -1,6 +1,7 @@
 package com.socgen.bookmark.sgbookmark.exception;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.ConstraintViolationException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,13 @@ public class ExceptionMapper {
 	
 	@ExceptionHandler({IllegalArgumentException.class})
 	public ResponseEntity<ApiResponse> handleIllegalArgException(IllegalArgumentException e){
+		ApiResponse response = new ApiResponse();
+		response.addError(HttpStatus.BAD_REQUEST.getReasonPhrase(), e.getMessage() != null ? e.getMessage() : "Payload Error");
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+	}
+	
+	@ExceptionHandler({ConstraintViolationException.class})
+	public ResponseEntity<ApiResponse> handleConstraintViolation(ConstraintViolationException e){
 		ApiResponse response = new ApiResponse();
 		response.addError(HttpStatus.BAD_REQUEST.getReasonPhrase(), e.getMessage() != null ? e.getMessage() : "Payload Error");
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);

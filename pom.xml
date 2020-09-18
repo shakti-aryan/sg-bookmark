@@ -25,12 +25,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
+			<!-- <exclusions>
 		      <exclusion>
 		        <groupId>org.springframework.boot</groupId>
 		        <artifactId>spring-boot-starter-tomcat</artifactId>
 		      </exclusion>
-		    </exclusions>
+		    </exclusions> -->
 		</dependency>
 		<dependency>
 		    <groupId>javax.servlet</groupId>
@@ -87,7 +87,7 @@
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-validator</artifactId>
-		    <version>7.0.0.Alpha6</version>
+		    <version>6.1.5.Final</version>
 		</dependency>
 		 <dependency>
             <groupId>org.projectlombok</groupId>

@@ -12,21 +12,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.socgen.bookmark.sgbookmark.exception.ExceptionMapper;
 import com.socgen.bookmark.sgbookmark.service.CardService;
 import com.socgen.bookmark.sgbookmark.service.UrlService;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/r")
-public class RedirectController {
+public class RedirectController extends ExceptionMapper{
 	
 	@Autowired
 	private CardService cardService;
 	
-	@GetMapping(value = "/{shortUrl}")
+	@GetMapping(value = "/{shortUrlCode}")
     @Cacheable(value = "urls", key = "#shortUrl", sync = true)
-    public ResponseEntity<Void> getAndRedirect(@PathVariable String shortUrl) {
-        String url = cardService.fetchOrignialUrl(shortUrl);
+    public ResponseEntity<Void> getAndRedirect(@PathVariable String shortUrlCode) {
+        String url = cardService.fetchOrignialUrl(shortUrlCode);
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(url))
                 .build();
     }
