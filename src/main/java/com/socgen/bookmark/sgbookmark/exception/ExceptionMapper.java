@@ -29,7 +29,7 @@ public class ExceptionMapper {
 	@ExceptionHandler({EntityNotFoundException.class})
 	public ResponseEntity<ApiResponse> handleEntityException(EntityNotFoundException e){
 		ApiResponse response = new ApiResponse();
-		response.addError(HttpStatus.NOT_FOUND.getReasonPhrase(), "Requested Entity is Expired Or Never Existed");
+		response.addError(HttpStatus.NOT_FOUND.getReasonPhrase(), e.getMessage() != null ? e.getMessage() : "Requested Entity is Expired Or Never Existed");
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
 	}
 	

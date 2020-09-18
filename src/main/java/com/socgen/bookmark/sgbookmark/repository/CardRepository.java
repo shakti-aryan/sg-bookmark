@@ -1,5 +1,7 @@
 package com.socgen.bookmark.sgbookmark.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +20,10 @@ public interface CardRepository extends JpaRepository<Card, Integer> {
 	
 	@Query(value = "SELECT long_url from tinyurl.card_details where tiny_url=:tinyUrl", nativeQuery = true)
 	String getOriginalUrlByTinyUrl(@Param("tinyUrl") String tinyUrl);
+	
+	@Query(value = "SELECT * from tinyurl.card_details where id IN :idList", nativeQuery = true)
+	List<Card> getCardListByIdList(@Param("idList") List<Integer> idList);
+	
+	@Query(value = "SELECT * from tinyurl.card_details where associated_group=:groupId", nativeQuery = true)
+	List<Card> getGroupAssociatedCard(@Param("groupId") Integer groupId);
 }
