@@ -6,21 +6,21 @@ This application provides solution for maintaining bookmarks. Get the shorten ha
 
 Give it a short by Navigating to
 
-    (http://sg-bookmark.appspot.com/swagger-ui.html)
+    http://sg-bookmark.appspot.com/swagger-ui.html
 
 ### Architecture
 
-    ![alt-text](https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/arch.png)
+    (https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/arch.png)
 
 #### Request Flow
 
-    ![alt-text](https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/reqFlow.png)
+    (https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/reqFlow.png)
 
 #### Shortning Flow
-    ![alt-text](https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/shortningFlow.png)
+    (https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/shortningFlow.png)
 
 #### Entity Relationship
-    ![alt-text](https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/DB Schema.jpg)
+    (https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/DB Schema.jpg)
 
 
 ### Tech Stack
