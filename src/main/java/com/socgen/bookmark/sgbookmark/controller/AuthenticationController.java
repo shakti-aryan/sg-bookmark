@@ -8,15 +8,18 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.socgen.bookmark.sgbookmark.exception.ExceptionMapper;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/api/auth")
-public class AuthenticationController {
+public class AuthenticationController extends ExceptionMapper{
 	
 	
-	@PostMapping(value = "/user")
+	@RequestMapping(value = "/user", method = { RequestMethod.POST,  RequestMethod.GET })
 	public Principal user(Principal principal) {
       return principal;
 	}

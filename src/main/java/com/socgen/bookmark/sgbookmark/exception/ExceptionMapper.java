@@ -6,8 +6,11 @@ import javax.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.common.exceptions.UnauthorizedUserException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpClientErrorException.Unauthorized;
+import org.springframework.web.server.MethodNotAllowedException;
+
 import com.socgen.bookmark.sgbookmark.model.ApiResponse;
 
 public class ExceptionMapper {
@@ -24,6 +27,20 @@ public class ExceptionMapper {
 		ApiResponse response = new ApiResponse();
 		response.addError(HttpStatus.BAD_REQUEST.getReasonPhrase(), e.getMessage() != null ? e.getMessage() : "Payload Error");
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+	}
+	
+	@ExceptionHandler({MethodNotAllowedException.class})
+	public ResponseEntity<ApiResponse> handleRequestTypeViolation(MethodNotAllowedException e){
+		ApiResponse response = new ApiResponse();
+		response.addError(HttpStatus.METHOD_NOT_ALLOWED.getReasonPhrase(), "Please Visit http://http://sg-bookmark.appspot.com/swagger-ui.html");
+		return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(response);
+	}
+	
+	@ExceptionHandler({HttpRequestMethodNotSupportedException.class})
+	public ResponseEntity<ApiResponse> handleRequestTyeViolation(HttpRequestMethodNotSupportedException e){
+		ApiResponse response = new ApiResponse();
+		response.addError(HttpStatus.METHOD_NOT_ALLOWED.getReasonPhrase(), "Please Visit http://http://sg-bookmark.appspot.com/swagger-ui.html");
+		return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(response);
 	}
 	
 	@ExceptionHandler({EntityNotFoundException.class})

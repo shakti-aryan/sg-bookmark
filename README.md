@@ -10,14 +10,17 @@ Give it a short by Navigating to
 
 ### Architecture
 
-    (https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/arch.png)
+    ![alt-text](https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/arch.png)
 
 #### Request Flow
 
-    (https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/reqFlow.png)
+    ![alt-text](https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/reqFlow.png)
 
 #### Shortning Flow
-    (https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/shortningFlow.png)
+    ![alt-text](https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/shortningFlow.png)
+
+#### Entity Relationship
+    ![alt-text](https://github.com/shakti-aryan/sg-bookmark/blob/master/arch/DB Schema.jpg)
 
 
 ### Tech Stack
@@ -51,7 +54,7 @@ Give it a short by Navigating to
 * This application uses Google app engine dependency to run, user has to configure the google cloud account details asked while executing above command
 
 ##### Running as Spring Boot App
-** To avoid Google Dependency **
+**To avoid Google Dependency**
     Comment out the **Exclusion of Tomcat dependency** mentioned in POM, and Run the application as normal Spring Boot application. :)
 
 ##### Accessing the App
@@ -59,3 +62,11 @@ Give it a short by Navigating to
 
 ##### Deploy the App
     mvn appengine:deploy
+
+    **CICD**
+    Continuous Integration has been configured with master branch with Google Cloud Build Trigger pipeline.
+    To Track (https://console.cloud.google.com/cloud-build/builds?project=sg-bookmark)
+
+##### Project Status & Monitoring overview
+
+    (https://console.cloud.google.com/home/dashboard?project=sg-bookmark)
